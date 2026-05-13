@@ -1,152 +1,169 @@
-# ZSH-Manager: The Ultimate Cross-Platform ZSH Configuration Framework
+# zsh-manager
 
-## 🚀 Introduction
+![Version](https://img.shields.io/badge/release-1.0.0-blue) ![License](https://img.shields.io/badge/license-MIT-green) ![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20macOS%20%7C%20Windows-lightgrey)
 
-**ZSH-Manager** is a powerful, lightweight, and flexible framework that enables you to maintain a single, unified ZSH configuration across **Linux, macOS, and Windows**. Designed for developers, system administrators, and power users, ZSH-Manager ensures a **consistent shell experience** across all operating systems.
+Your ZSH config, finally under control.
 
-## 🔥 Why Choose ZSH-Manager?
+zsh-manager is a small framework that brings structure to your shell configuration. Split your aliases, functions, secrets, and tool setup into focused files. Run the same config on Linux, macOS, and Windows without touching a line. Keep the framework separate from your personal config so you can pull updates without blowing anything up.
 
-- ✅ **Seamless Cross-Platform Support**: Works flawlessly on **Linux, macOS, and Windows**.
-- ✅ **Support Environment variables**: Easy and extensive way to use Environment variables.
-- ✅ **Path Handling**: Easy and extensive way to handle Path variables.
-- ✅ **Portable & Unified ZSH Configuration**: Manage all your shell settings from one place.
-- ✅ **Customizable & Modular**: Use preloaded configurations and extend functionality with custom modules.
-- ✅ **Compatible with All ZSH Frameworks**: Supports **Oh-My-Zsh, Prezto, Antigen, and Zim**.
-- ✅ **Lightweight & Fast**: Minimal dependencies, designed for performance.
-- ✅ **Effortless Synchronization**: Easily sync your settings via **Git, Dropbox, or cloud services**.
-- ✅ **Automated Setup**: Quickly set up using the provided **symlink script**.
-
-## 🏗️ Directory Structure
-
-```
-zsh-manager/
-├── README.md                           # Documentation
-├── run-to-symlink.sh                     # Setup script to symlink .zshrc
-├── .zshrc                              # Main ZSH configuration file
-├── preload_configs/                    # OS-specific preloaded configurations
-│   ├── common/                         # Shared configurations
-│   ├── linux/                          # Linux-specific configs
-│   │   └── path.sh                     # Linux-specific path configurations
-│   ├── macos/                          # macOS-specific modules
-│   │   └── path.sh                     # macOS-specific path configurations
-│   ├── windows/                        # Windows-specific configs
-│   │   └── path.sh                     # Windows-specific path configurations
-├── modules/                            # Custom modules (aliases, functions, etc.)
-│   ├── common/                         # Cross-platform modules
-│   ├── linux/                          # Linux-specific modules
-│   ├── macos/                          # macOS-specific modules
-│   ├── windows/                        # Windows-specific modules
-```
-
-## 📦 Installation & Setup
-
-### 1️⃣ Clone the Repository
-
-```bash
-git clone git@github.com:MRZ07/zsh-manager.git
-```
-
-### 2️⃣ Move Your Existing ZSH Configuration
-Move your existing `.zshrc` file to the framework’s root folder
-
-### 3️⃣ Run the Setup Script
-```bash
-./run-to-symlink.sh
-```
-This script will create a **symlink** to the recently moved configuration in the framework’s root folder.
-
-### 4️⃣ Customize Your Configuration
-
-- Add **OS-specific** preloaded configs in `preload_configs/`
-- Add **OS-specific** Environment/Path configs in `preload_configs/*os*/path.sh"`
-- Extend functionality with  **custom modules** in `modules/`
-
-## ⚙️ How ZSH-Manager Works
-
-### **1️⃣ Dynamic Configuration Loading**
-ZSH-Manager **automatically detects your operating system** and loads the appropriate configurations.
-
-- **Common settings** (`preload_configs/common/`) are loaded first.
-- **OS-specific settings** (`preload_configs/linux/`, `macos/`, `windows/`) are applied afterward.
-
-### **2️⃣ Modular Architecture**
-- Store **custom functions, aliases, and scripts** in `modules/`.
-- Modules are categorized into **common** and **OS-specific** folders.
-- Ignore specific modules or configurations by **prefixing folder names with `#`** (e.g., `#ignored_module/`).
-
-### **3️⃣ Symlink-Based Setup**
-- The **setup script** (`run-to-symlink.sh`) automatically links `.zshrc` to the framework.
-- This allows **easy switching** between configurations without modifying system files.
-
-## 🎯 Key Features
-
-### 🔗 **Cross-Platform Compatibility**
-- Works seamlessly on **Linux, macOS, and Windows (WSL, Git Bash, Cygwin, MSYS2)**.
-
-### 🔄 **Auto-Loading of Preloaded Configurations**
-- Automatically loads common and OS-specific **aliases, functions, and environment variables**.
-
-### 🎨 **Custom Modules & Plugins Support**
-- Organize your scripts with a modular structure.
-- Supports **any additional ZSH plugins or external tools**.
-
-### 🏎️ **Optimized for Speed & Performance**
-- **Lightweight** with minimal overhead.
-- **Fast execution** with optimized loading logic.
-
-### ☁️ **Sync Anywhere**
-- Easily sync configurations across devices using **Git, Dropbox, or cloud services**.
-
-### 🛠️ **Works with Any ZSH Framework**
-- Compatible with **Oh-My-Zsh, Prezto, Antigen, Zim, and more**.
-
-### 🧩 **Fully Customizable**
-- Add, remove, or modify configurations as needed.
-- Ignore specific scripts or modules by naming them with `#`.
-
-## 🛠️ Usage
-
-### **Adding Custom Modules**
-Place your custom ZSH scripts inside the corresponding **modules/** folder:
-
-```bash
-modules/
-├── common/
-│   ├── aliases.sh   # Shared aliases
-│   ├── functions.sh # Shared functions
-│   ├── style/
-│   │   └── starship.toml  # Custom Starship prompt config
-├── linux/
-│   ├── linux_aliases.sh  # Linux-specific aliases
-├── macos/
-│   ├── macos_shortcuts.sh # macOS-specific functions
-├── windows/
-│   ├── win_helpers.sh     # Windows-specific helpers
-```
-
-### **Ignoring Folders & Scripts**
-To prevent specific scripts from being loaded, **prefix the filename or folder with `#`**:
-
-```bash
-modules/
-├── common/
-│   ├── aliases.sh
-│   ├── #deprecated_aliases.sh  # This file will be ignored
-│   ├── #old_scripts/           # This folder will be ignored
-```
-
-### **Using Environment variables**
-Place your env variables inside your home directory **~/.env.sh** folder:
-```bash
-export ENV_VAR1="Value1"
-```
-
-## 🤝 Contributing
-We welcome contributions! Feel free to submit issues, feature requests, or pull requests.
-
-## 📜 License
-ZSH-Manager is open-source and available under the **MIT License**.
+No magic. Just organized shell scripts and a loader that knows what order to run them in.
 
 ---
 
-🔥 **Start using ZSH-Manager today and streamline your ZSH configuration across all platforms!** 🚀
+## Directory Structure
+
+```
+zsh-manager/
+├── load.sh                          # Sourceable framework loader
+├── .zshrc                           # Standalone entry point (symlinked to ~/.zshrc)
+├── run-to-simlink.sh                # Setup script for standalone use
+│
+├── secrets/                         # API keys & tokens — *.sh gitignored by default
+│   ├── common/                      # Loaded on all platforms
+│   ├── linux/
+│   ├── macos/
+│   └── windows/
+│
+├── preload_configs/                 # Shell initialization (PATH, plugins, tool setup)
+│   ├── common/
+│   ├── linux/
+│   │   └── path.sh
+│   ├── macos/
+│   │   └── path.sh
+│   └── windows/
+│       └── path.sh
+│
+└── modules/                         # Aliases and functions
+    ├── common/
+    ├── linux/
+    ├── macos/
+    └── windows/
+```
+
+---
+
+## How It Works
+
+### Loading Order
+
+Each section loads `common/` first, then your OS-specific folder. Within each folder, every `*.sh` file is sourced recursively.
+
+| # | Section | What goes here |
+|---|---------|---------------|
+| 0 | `preload_configs/<os>/path.sh` | Loaded **first**, explicitly — ensures PATH is ready |
+| 1 | `secrets/` | API keys, tokens, env vars |
+| 2 | `preload_configs/` | Shell plugins, tool init (omz, fnm, zoxide…) |
+| 3 | `modules/` | Aliases and functions |
+
+### Ignoring Files
+
+Prefix any file or folder with `#` to skip it without deleting it:
+
+```
+modules/common/
+├── aliases.sh
+├── #old-aliases.sh      ← skipped
+└── #deprecated/         ← entire folder skipped
+```
+
+### `ZSH_MANAGER_CONFIG_DIR`
+
+Set this before sourcing `load.sh` to point the framework at a different directory for your personal configs. This is how decoupled mode works — your scripts live in your own repo, the framework lives separately and can be updated independently.
+
+---
+
+## Installation
+
+### Standalone
+
+Everything in one place — the framework directory is also your config directory.
+
+```sh
+git clone git@github.com:MRZ07/zsh-manager.git ~/.config/zsh-manager
+cd ~/.config/zsh-manager && ./run-to-simlink.sh
+```
+
+Symlinks `~/.zshrc` → `~/.config/zsh-manager/.zshrc`. Drop scripts into `modules/`, `preload_configs/`, and `secrets/`.
+
+---
+
+### Decoupled — recommended for dotfiles repos
+
+Keep your personal config in your own repo. Pull framework updates without touching your scripts.
+
+**1. Clone the framework:**
+
+```sh
+git clone git@github.com:MRZ07/zsh-manager.git ~/.config/zsh-manager
+```
+
+**2. Add a loader to your dotfiles:**
+
+```sh
+# your-dotfiles/zsh-manager/load-zsh-manager.sh
+
+ZSH_MANAGER_CONFIG_DIR=$(dirname $(realpath $HOME/.zshrc))
+ZSH_MANAGER_FRAMEWORK_DIR="${ZSH_MANAGER_FRAMEWORK_DIR:-$HOME/.config/zsh-manager}"
+
+if [[ ! -f "$ZSH_MANAGER_FRAMEWORK_DIR/load.sh" ]]; then
+    echo "[zsh-manager] Framework not found at: $ZSH_MANAGER_FRAMEWORK_DIR"
+    echo "[zsh-manager] Run: git clone git@github.com:MRZ07/zsh-manager.git $HOME/.config/zsh-manager"
+    return 1
+fi
+
+source "$ZSH_MANAGER_FRAMEWORK_DIR/load.sh"
+```
+
+**3. Source it from your `.zshrc`:**
+
+```sh
+source $(dirname $(realpath $HOME/.zshrc))/load-zsh-manager.sh
+```
+
+**4. Update the framework any time:**
+
+```sh
+git -C ~/.config/zsh-manager pull
+```
+
+> **Custom location:** Set `ZSH_MANAGER_FRAMEWORK_DIR` in `~/.zshenv` if the framework lives somewhere other than `~/.config/zsh-manager`.
+
+---
+
+## Secrets
+
+API keys and tokens go in `secrets/`. Every `*.sh` file there is gitignored by default — they can never be accidentally committed.
+
+```
+secrets/common/
+├── secrets.sh.example   ← tracked template, copy this to get started
+├── api-keys.sh          ← your actual values (gitignored)
+└── work.sh              ← split by category however makes sense to you
+```
+
+First-time setup on a new machine:
+
+```sh
+cp secrets/common/secrets.sh.example secrets/common/secrets.sh
+# open secrets.sh and fill in your values
+```
+
+> **Migrating from `~/.env.sh`:** The framework still loads `~/.env.sh` if it exists, so existing setups keep working. `secrets/` is the preferred approach going forward.
+
+---
+
+## Compatibility
+
+Works alongside Oh-My-Zsh, Prezto, Antigen, Zim, and other ZSH frameworks.
+
+| Platform | Support |
+|----------|---------|
+| macOS | ✓ |
+| Linux | ✓ |
+| Windows (WSL, Git Bash, Cygwin, MSYS2) | ✓ |
+
+---
+
+## License
+
+MIT

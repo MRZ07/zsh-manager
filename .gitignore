@@ -76,3 +76,4 @@ $RECYCLE.BIN/
 #
 preload_configs/**/**.sh
 modules/**/**.sh
+secrets/**/*.sh
