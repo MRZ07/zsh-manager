@@ -48,11 +48,19 @@ _zsh_manager_load_dir() {
     done
 }
 
-# Load a single profile: common/ (cross-platform), then OS-specific
+# Load a single profile: OS path.sh first, then common/, then OS-specific
 _zsh_manager_load_profile() {
     local profile="$1"
     local base="${ZSH_MANAGER_CONFIG_DIR}/profiles/$profile"
     [[ -d "$base" ]] || return
+
+    # Keep old behavior: load OS path.sh before OMZ/common scripts.
+    # The same file may be sourced again during recursive OS load; path.sh
+    # should be written idempotent.
+    if [[ -n "$_ZSH_MANAGER_OS_FOLDER" ]]; then
+        local path_sh="$base/$_ZSH_MANAGER_OS_FOLDER/path.sh"
+        [[ -f "$path_sh" ]] && source "$path_sh"
+    fi
 
     _zsh_manager_load_dir "$base/common"
     [[ -n "$_ZSH_MANAGER_OS_FOLDER" ]] && _zsh_manager_load_dir "$base/$_ZSH_MANAGER_OS_FOLDER"
